@@ -1,0 +1,6 @@
+.idea
+build
+dist
+src/main/proto/**/*.py
+src/main/proto/im_protobuf.egg-info
+

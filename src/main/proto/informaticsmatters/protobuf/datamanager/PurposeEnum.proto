@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package informaticsmatters.protobuf.datamanager;
+
+// Purpose enum.
+// A replication of the corresponding Data Manager's (DM) TaskPurposeEnum
+// defined in its app/models.py.
+enum PurposeEnum {
+    // Every enum _must_ have a zero.
+    // The corresponding DM enum does not - so UNDEFINED provides padding
+    // so that enums here match those in the DM.
+    PURPOSE_UNDEFINED = 0;
+
+    PURPOSE_DATASET = 1;
+    PURPOSE_FILE = 2;
+    PURPOSE_INSTANCE = 3;
+}
