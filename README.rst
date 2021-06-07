@@ -5,7 +5,7 @@ Informatics Matters cross-product protocol buffers
    :target: https://badge.fury.io/py/im-protobuf
    :alt: PyPI package (latest)
 
-A library of python bindings for protocol buffer definitions used by one or
+A library of python bindings for `protocol buffer`_ definitions used by one or
 more products in the Informatics Matters product suite.
 
 The protocol buffers are used across multiple components and languages.
@@ -20,6 +20,8 @@ file might be::
 When transmitted on a topic-based messaging service the topic is
 the lower-case dot-separated message name relative to ``informaticsmatters``
 (excluding the ``Message`` suffix), e.g. ``datamanager.pod``.
+
+.. _Protocol Buffer: https://developers.google.com/protocol-buffers/docs/proto3
 
 Installation (Python)
 =====================
