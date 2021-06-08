@@ -43,4 +43,7 @@ message PodMessage {
 
     // Fields 16..2047
     //
+    // The Pod (container) exit code.
+    // Set when it is known (e.g when the phase is 'Succeeded')
+    uint32 exit_code = 16;
 }
