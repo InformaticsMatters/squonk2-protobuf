@@ -45,5 +45,9 @@ message PodMessage {
     //
     // The Pod (container) exit code.
     // Set when it is known (e.g when the phase is 'Succeeded')
-    uint32 exit_code = 16;
+    // Because the exit code always has a value the user is required
+    // to also set has_exit_code if the code is valid.
+    // Remember - default values are not transmitted on the wire.
+    bool has_exit_code = 16;
+    uint32 exit_code = 17;
 }

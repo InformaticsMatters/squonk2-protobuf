@@ -24,7 +24,7 @@ def get_long_description():
 setup(
 
     name='im-protobuf',
-    version=os.environ.get('GITHUB_REF_SLUG', '1.0.2'),
+    version=os.environ.get('GITHUB_REF_SLUG', '1.0.3'),
     author='Alan Christie',
     author_email='achristie@informaticsmatters.com',
     url='https://github.com/informaticsmatters/protobuf',
