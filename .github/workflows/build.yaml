@@ -49,7 +49,6 @@ jobs:
       run: |
         pyroma .
         protoc -I=${P_BASE} --python_out=${P_BASE} ${P_BASE}/${DM_PATH}/*.proto
-        touch ${P_BASE}/informaticsmatters/__init__.py
         touch ${P_BASE}/informaticsmatters/protobuf/__init__.py
         touch ${P_BASE}/${DM_PATH}/__init__.py
         python setup.py bdist_wheel
