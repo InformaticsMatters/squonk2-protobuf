@@ -1,0 +1,54 @@
+---
+name: build
+
+# -----------------
+# Control variables (GitHub Secrets)
+# -----------------
+#
+# At the GitHub 'organisation' or 'project' level you must have the following
+# GitHub 'Repository Secrets' defined (i.e. via 'Settings -> Secrets'): -
+#
+# (none)
+#
+# -----------
+# Environment (GitHub Environments)
+# -----------
+#
+# Environment         (none)
+
+on:
+- push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version:
+        - '3.9'
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install protoc
+      uses: arduino/setup-protoc@v1
+      with:
+        version: '3.17.3'
+    - name: Install requirements
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r package-requirements.txt
+    - name: Build
+      env:
+        P_BASE: 'src/main/proto'
+        DM_PATH: 'informaticsmatters/protobuf/datamanager'
+      run: |
+        pyroma .
+        protoc -I=${P_BASE} --python_out=${P_BASE} ${P_BASE}/${DM_PATH}/*.proto
+        touch ${P_BASE}/informaticsmatters/__init__.py
+        touch ${P_BASE}/informaticsmatters/protobuf/__init__.py
+        touch ${P_BASE}/${DM_PATH}/__init__.py
+        python setup.py bdist_wheel
