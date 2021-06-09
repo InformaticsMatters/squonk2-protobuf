@@ -15,7 +15,7 @@ From there the directory is ``proto/informaticsmatters`` followed by component
 directories or a ``common`` directory. An example protocol message
 file might be::
 
-    src/main/proto/informaticsmatters/datamanager/PodMessage.proto
+    src/main/proto/informaticsmatters/protobuf/datamanager/PodMessage.proto
 
 When transmitted on a topic-based messaging service the topic is
 the lower-case dot-separated message name relative to ``informaticsmatters``
@@ -36,10 +36,11 @@ there::
 Once installed you can access the protocol buffers with::
 
     >>> from informaticsmatters.protobuf.datamanager import PodMessage_pb2
+    >>> pm: PodMessage_pb2.PodMessage = PodMessage_pb2.PodMessage()
 
 Get in touch
 ============
 
-- Report bugs, suggest features or view the source code `on GitLab`_.
+- Report bugs, suggest features or view the source code `on GitHub`_.
 
-.. _on GitLab: https://github.com/informaticsmatters/protobuf
+.. _on GitHub: https://github.com/informaticsmatters/protobuf
