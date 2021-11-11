@@ -5,6 +5,7 @@ package informaticsmatters.protobuf.accountserver;
 // Commodity enum.
 enum CommodityEnum {
     // Every enum _must_ have a zero.
-    STORAGE = 0;
-    PROCESSING = 1;
+    MEMORY = 0;
+    STORAGE = 1;
+    PROCESSING = 2;
 }
