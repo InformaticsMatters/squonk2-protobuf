@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package informaticsmatters.protobuf.accountserver;
+
+// Merchant enum.
+enum MerchantEnum {
+    // Every enum _must_ have a zero.
+    DATA_MANAGER = 0;
+}

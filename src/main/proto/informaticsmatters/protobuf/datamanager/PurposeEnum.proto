@@ -14,4 +14,5 @@ enum PurposeEnum {
     DATASET = 1;
     FILE = 2;
     INSTANCE = 3;
+    PROJECT = 4;
 }

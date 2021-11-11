@@ -5,8 +5,8 @@ package informaticsmatters.protobuf.datamanager;
 import "informaticsmatters/protobuf/datamanager/PurposeEnum.proto";
 
 // Carrier of Pod changes.
-// This message is produced by the Data Manger (MD) watcher,
-// and is consumed by the Data Manager 'consumer'.
+// This message is produced by the Data Manger (KEW) watcher,
+// and is consumed by the Data Manager 'consumer' (PBC).
 message PodMessage {
     // Fields 1..15
     //
