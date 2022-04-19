@@ -32,14 +32,15 @@ To build the package distribution manually you will need to have
 [protoc] installed, you can then run: -
 
     export P_BASE=src/main/proto
-    export DM_PATH=informaticsmatters/protobuf/datamanager
+    export I_PATH=informaticsmatters/protobuf
+
+    for P_DIR in $(ls -d ${P_BASE}/${I_PATH}/*/); do
+        protoc -I=${P_BASE} --python_out=${P_BASE} ${P_DIR}/*.proto;
+        touch ${P_DIR}/__init__.py
+    done
+    touch ${P_BASE}/${I_PATH}/__init__.py
 
     python -m pip install --upgrade build
-    for P_DIR in $(ls ${P_BASE}//informaticsmatters/protobuf); do
-        protoc -I=${P_BASE} --python_out=${P_BASE} ${P_BASE}/informaticsmatters/protobuf/${P_DIR}/*.proto;
-        touch ${P_BASE}/informaticsmatters/protobuf/${P_DIR}/__init__.py
-    done
-    touch ${P_BASE}/informaticsmatters/protobuf/__init__.py
     python -m build --sdist --wheel --outdir dist/
 
 >   Because you're building outside the CI process the version number of
