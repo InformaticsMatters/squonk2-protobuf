@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package informaticsmatters.protobuf.datamanager;
+
+// Carrier of Pod changes.
+// This message is produced by the Data Manger (KEW) watcher,
+// and is consumed by the Data Manager 'consumer' (PBC).
+message PodMessage {
+  // Fields 1..15
+  //
+  // Messages typically contain an origin time-stamp.
+  // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.000000Z
+  string timestamp = 1;
+  // The Pod name
+  string pod_name = 2;
+  // The Task ID
+  // All Pods are the result of a DM 'Task'
+  string task_id = 3;
+  // The Purpose for the Pod (the Task's purpose)
+  string purpose = 4;
+  // The Task phase (a Kubernetes Pod phase).
+  // This is normally the corresponding Pod's 'status.phase' field value,
+  // a string, typically one of the following,
+  // (listed in alphabetical order): -
+  //
+  // - Completed
+  // - CrashLoopBackOff
+  // - Failed
+  // - ImagePullBackOff
+  // - Pending
+  // - Running
+  // - Succeeded
+  // - Unknown
+  //
+  // A typical successful phase sequence would be: -
+  //
+  //  Pending -> Running -> Succeeded
+  //
+  // See https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
+  string phase = 5;
+
+  // Fields 16..2047
+  //
+  // The Pod (container) exit code.
+  // Set when it is known (e.g when the phase is 'Succeeded')
+  // Because the exit code always has a value the user is required
+  // to also set has_exit_code if the code is valid.
+  // Remember - default values are not transmitted on the wire.
+  bool has_exit_code = 16;
+  uint32 exit_code = 17;
+}

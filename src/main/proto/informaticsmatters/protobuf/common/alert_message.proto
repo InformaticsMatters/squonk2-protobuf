@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package informaticsmatters.protobuf.common;
+
+// Carrier of Alert messages.
+// This message can be produced by any service.
+message AlertMessage {
+  // Fields 1..15
+  //
+  // Messages typically contain an origin time-stamp.
+  // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.000000Z
+  string timestamp = 1;
+  // The alert 'LEVEL', a Python logging level
+  // The Purpose for the Pod (the Task's purpose)
+  string level = 2;
+  // The primary alert message
+  string message = 3;
+  // The alert traceback
+  string traceback = 4;
+
+  // Fields 16..2047
+  //
+  // An optional alert 32-bit code number
+  // The value is alert-specific
+  // Any non-zero value is considered of value (-ve or +ve)
+  sint32 code = 16;
+}

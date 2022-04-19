@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package informaticsmatters.protobuf.accountserver;
+
+// Carrier of charges to the AccountServer.
+message ChargeMessage {
+  // Fields 1..15
+  //
+  // Messages typically contain an origin time-stamp.
+  // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.000000Z
+  string timestamp = 1;
+  // What's being charged?
+  string commodity = 2;
+  // The Organisation, Unit, Product, User IDs and a Reference
+  string org_id = 3;
+  string unit_id = 4;
+  string product_id = 5;
+  string user_id = 6;
+  string reference = 7;
+  // The Merchant and its reference
+  string merchant = 8;
+  string merchant_reference = 9;
+  // The charge.
+  // Values are typically numeric/Decimal strings.
+  // A charge is made using coins or using commodity units.
+  // Storage might use the units field (which might be a byte value).
+  // Interpretation of units is commodity-specific.
+  // Normally only one of these is set.
+  string charge_coins = 10;
+  string charge_units = 11;
+
+  // Fields 16..2047
+}
