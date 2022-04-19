@@ -1,36 +1,30 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 # Setup module for the Protocol Buffer project
 #
-# June 2021
+# April 2022
 
-from setuptools import setup
 import os
+import setuptools
 
 # Pull in the essential run-time requirements
-# We use an external file so we can do a
-# `pip install -r runtime-build-requirements.txt`
-# when building a Docker image.
-with open('requirements.txt') as file:
-    requirements = file.read().splitlines()
-
+with open("requirements.txt", "r", encoding="utf-8") as fh:
+    requirements = fh.read().splitlines()
 
 # Use the README.rst as the long description.
-def get_long_description():
-    return open('README.rst').read()
+with open("README.rst", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
 
-
-setup(
+setuptools.setup(
 
     name='im-protobuf',
-    version=os.environ.get('GITHUB_REF_SLUG', '1.0.3'),
+    version=os.environ.get('GITHUB_REF_SLUG', '1.0.0'),
     author='Alan Christie',
     author_email='achristie@informaticsmatters.com',
     url='https://github.com/informaticsmatters/protobuf',
     license='MIT',
     description='Cross-product protocol buffers',
-    long_description=get_long_description(),
+    long_description=long_description,
     keywords='protobuf protoc messaging',
     platforms=['any'],
 

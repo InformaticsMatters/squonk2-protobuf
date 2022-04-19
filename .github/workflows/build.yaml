@@ -17,7 +17,11 @@ name: build
 # Environment         (none)
 
 on:
-- push
+  push:
+    branches:
+    - '**'
+    tags-ignore:
+    - '**'
 
 jobs:
   build:
@@ -25,7 +29,7 @@ jobs:
     strategy:
       matrix:
         python-version:
-        - '3.9'
+        - '3.10'
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -40,8 +44,9 @@ jobs:
     - name: Install requirements
       run: |
         python -m pip install --upgrade pip
+        python -m pip install --upgrade build
+        pip install -r requirements.txt
         pip install -r build-requirements.txt
-        pip install -r package-requirements.txt
     - name: Build
       env:
         P_BASE: 'src/main/proto'
@@ -51,4 +56,4 @@ jobs:
         protoc -I=${P_BASE} --python_out=${P_BASE} ${P_BASE}/${DM_PATH}/*.proto
         touch ${P_BASE}/informaticsmatters/protobuf/__init__.py
         touch ${P_BASE}/${DM_PATH}/__init__.py
-        python setup.py bdist_wheel
+        python -m build --sdist --wheel --outdir dist/
