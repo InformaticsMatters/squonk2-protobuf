@@ -29,7 +29,7 @@ with [Python packaging] will help. The project is built and published
 to PyPI automatically from the main branch using GitHub Actions.
 
 To build the package distribution manually you will need to have
-installed [protoc], you can then run run: -
+[protoc] installed, you can then run: -
 
     export P_BASE=src/main/proto
     export DM_PATH=informaticsmatters/protobuf/datamanager
@@ -43,15 +43,14 @@ installed [protoc], you can then run run: -
     python -m build --sdist --wheel --outdir dist/
 
 >   Because you're building outside the CI process the version number of
-    the package will be fixed at 1.0.0. DO NOT change this behaviour.
+    the package will be fixed at 2.0.0. DO NOT change this behaviour.
 
 To install the local build, without needing to publish the package run: -
 
-    pip install dist/im_protobuf-1.0.0-py3-none-any.whl
+    pip install dist/im_protobuf-2.0.0-py3-none-any.whl
 
 ---
 
-[black]: https://black.readthedocs.io/en/stable
 [commitizen]: https://commitizen-tools.github.io/commitizen/
 [conventional commit]: https://www.conventionalcommits.org/en/v1.0.0/
 [pre-commit]: https://pre-commit.com
