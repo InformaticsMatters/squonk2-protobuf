@@ -11,9 +11,9 @@ commitizen:
   # What's the first revision we're interested imn?
   # For us it's the revision we started using
   # enforcing the use of conventional commits.
-  # Prior to 1.2.0 we weren't using it on every commit
+  # Prior to 2.0.0 we weren't using it on every commit
   # and didn't have everything ready for change-logs.
-  changelog_start_rev: 1.2.0
+  changelog_start_rev: 2.0.0
   customize:
     schema_pattern: "^(?P<change_type>feat|fix|perf|refactor|remove|style|test|build|docs|ci|BREAKING CHANGE)(?:\\((?P<scope>[^()\\r\\n]*)\\)|\\()?(?P<breaking>!)?:\\s(?P<message>.*)?"
     commit_parser: "^(?P<change_type>feat|fix|perf|refactor|remove|style|test|build|docs|ci|BREAKING CHANGE)(?:\\((?P<scope>[^()\\r\\n]*)\\)|\\()?(?P<breaking>!)?:\\s(?P<message>.*)?"
