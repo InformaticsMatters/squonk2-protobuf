@@ -51,9 +51,10 @@ jobs:
         DM_PATH: 'informaticsmatters/protobuf/datamanager'
       run: |
         pyroma .
-        protoc -I=${P_BASE} --python_out=${P_BASE} ${P_BASE}/${DM_PATH}/*.proto
-        touch ${P_BASE}/informaticsmatters/protobuf/__init__.py
-        touch ${P_BASE}/${DM_PATH}/__init__.py
+        for P_DIR in $(ls ${P_BASE}//informaticsmatters/protobuf); do
+            protoc -I=${P_BASE} --python_out=${P_BASE} ${P_BASE}/informaticsmatters/protobuf/${P_DIR}/*.proto;
+            touch ${P_BASE}/informaticsmatters/protobuf/${P_DIR}/__init__.py
+        done
         python -m build --sdist --wheel --outdir dist/
     - name: Publish
       uses: pypa/gh-action-pypi-publish@release/v1

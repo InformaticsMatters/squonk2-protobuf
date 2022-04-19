@@ -35,9 +35,11 @@ installed [protoc], you can then run run: -
     export DM_PATH=informaticsmatters/protobuf/datamanager
 
     python -m pip install --upgrade build
-    protoc -I=${P_BASE} --python_out=${P_BASE} ${P_BASE}/${DM_PATH}/*.proto
+    for P_DIR in $(ls ${P_BASE}//informaticsmatters/protobuf); do
+        protoc -I=${P_BASE} --python_out=${P_BASE} ${P_BASE}/informaticsmatters/protobuf/${P_DIR}/*.proto;
+        touch ${P_BASE}/informaticsmatters/protobuf/${P_DIR}/__init__.py
+    done
     touch ${P_BASE}/informaticsmatters/protobuf/__init__.py
-    touch ${P_BASE}/${DM_PATH}/__init__.py
     python -m build --sdist --wheel --outdir dist/
 
 >   Because you're building outside the CI process the version number of
