@@ -1,6 +1,6 @@
 ---
 minimum_pre_commit_version: 2.18.1
-
+exclude: ^(dist|build)
 repos:
 
 # commit-msg hooks
@@ -32,3 +32,8 @@ repos:
   - id: trailing-whitespace
     args:
     - --markdown-linebreak-ext=md
+# Protocol buffer linting
+- repo: https://github.com/yoheimuta/protolint
+  rev: v0.37.1
+  hooks:
+  - id: protolint
