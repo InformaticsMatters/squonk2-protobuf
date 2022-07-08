@@ -38,6 +38,13 @@ message PodMessage {
   //
   // See https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/
   string phase = 5;
+  // An optional ISO8601 timestamp for the start time of the Pod.
+  // This is the time the Pod is given CPU time and has become Ready.
+  string start_timestamp = 6;
+  // An optional ISO8601 timestamp for the finish time of the Pod.
+  // If this is set there should be a corresponding start-time.
+  // which is guaranteed not to be later than the finish time.
+  string finish_timestamp = 7;
 
   // Fields 16..2047
   //
