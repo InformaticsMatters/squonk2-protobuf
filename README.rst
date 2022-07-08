@@ -35,8 +35,8 @@ there::
 
 Once installed you can access the protocol buffers with::
 
-    >>> from informaticsmatters.protobuf.datamanager import PodMessage_pb2
-    >>> pm: PodMessage_pb2.PodMessage = PodMessage_pb2.PodMessage()
+    >>> from informaticsmatters.protobuf.datamanager.pod_message_pb2 import PodMessage
+    >>> pm: PodMessage = PodMessage()
 
 Get in touch
 ============
