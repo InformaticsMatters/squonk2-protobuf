@@ -17,7 +17,7 @@ message PodMessage {
   // All Pods are the result of a DM 'Task'
   string task_id = 3;
   // The Purpose for the Pod (the Task's purpose)
-  string purpose = 4;
+  uint32 purpose = 4;
   // The Task phase (a Kubernetes Pod phase).
   // This is normally the corresponding Pod's 'status.phase' field value,
   // a string, typically one of the following,
@@ -55,4 +55,7 @@ message PodMessage {
   // Remember - default values are not transmitted on the wire.
   bool has_exit_code = 16;
   uint32 exit_code = 17;
+
+  // Instance ID (id present)
+  string instance_id = 18;
 }
