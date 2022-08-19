@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package informaticsmatters.protobuf.accountserver;
+
+// Carrier of charges to the AccountServer.
+message ChargeBeginMessage {
+  // Fields 1..15
+  //
+  // Messages typically contain an origin time-stamp.
+  // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.000000Z
+  string timestamp = 1;
+  // To be accepted charges need an authorisation code.
+  // This will have been provided by the Account Server.
+  string auth_code = 2;
+
+  // Fields 16..2047
+
+  // If an authorisation reference is available that can be provided.
+  string auth_ref = 16;
+}

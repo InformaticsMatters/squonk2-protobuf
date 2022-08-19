@@ -9,19 +9,22 @@ enum OperationEnum {
   OPERATION_ENUM_MEMORY = 3;
 }
 
-// Carrier of charges to the AccountServer.
+// A Charge message.
+// A sequence of charges (for a given authorisation code)
+// starts with a ChargeBegin message
+// and ends with a ChargeEnd message.
 message ChargeMessage {
   // Fields 1..15
   //
   // Messages typically contain an origin time-stamp.
   // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.000000Z
   string timestamp = 1;
-  // A unique charge reference, what's the operation being charged,
-  // and what's the subject being charged? The subject may be something
-  // like a Data Manager Instance UUID.
-  string uuid = 2;
+  // What's the operation being charged,
+  // and what's the subject being charged?
+  // The subject may be something like a Data Manager Instance UUID.
   OperationEnum operation = 3;
   string subject = 4;
+
   // The coin value.
   // A string representation of a floating-point number,
   // typically a Python Decimal rather than a float (to avoid any transmission
