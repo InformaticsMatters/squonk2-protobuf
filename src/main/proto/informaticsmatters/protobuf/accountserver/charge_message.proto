@@ -19,11 +19,14 @@ message ChargeMessage {
   // Messages typically contain an origin time-stamp.
   // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.000000Z
   string timestamp = 1;
+  string subject = 2;
+  // To be accepted charges need an authorisation code.
+  string auth_code = 3;
+
   // What's the operation being charged,
   // and what's the subject being charged?
   // The subject may be something like a Data Manager Instance UUID.
-  OperationEnum operation = 3;
-  string subject = 4;
+  OperationEnum operation = 4;
 
   // The coin value.
   // A string representation of a floating-point number,
@@ -34,23 +37,21 @@ message ChargeMessage {
 
   // A sequence number (to provide de-duplication)
   uint32 sqn = 6;
-  // The user (name) responsible for the charge,
-  // and the Product (or Unit) providing the funds.
-  // One of Product or Unit must be provided but not necessarily both.
+  // The user (name) responsible for the charge.
   string user = 7;
-  string product_id = 8;
-  string unit_id = 9;
-
-  // To be accepted charges need an authorisation code.
-  string auth_code = 10;
 
   // Fields 16..2047
+
+  // The Product (or Unit) providing the funds.
+  // One of Product or Unit must be provided but not necessarily both.
+  string product_id = 16;
+  string unit_id = 17;
 
   // Any charge-specific additional material.
   // If used this should be a string representation of
   // a dictionary/map. The keys and values are not
   // interpreted, they're simply passed-on verbatim.
-  string additional_data = 16;
+  string additional_data = 18;
   // If an authorisation reference is available that can be provided.
-  string auth_ref = 17;
+  string auth_ref = 19;
 }
