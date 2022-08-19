@@ -2,6 +2,13 @@ syntax = "proto3";
 
 package informaticsmatters.protobuf.accountserver;
 
+enum OperationEnum {
+  OPERATION_ENUM_UNSPECIFIED = 0;
+  OPERATION_ENUM_STORAGE = 1;
+  OPERATION_ENUM_PROCESSING = 2;
+  OPERATION_ENUM_MEMORY = 3;
+}
+
 // Carrier of charges to the AccountServer.
 message ChargeMessage {
   // Fields 1..15
@@ -9,25 +16,38 @@ message ChargeMessage {
   // Messages typically contain an origin time-stamp.
   // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.000000Z
   string timestamp = 1;
-  // What's being charged?
-  string commodity = 2;
-  // The Organisation, Unit, Product, User IDs and a Reference
-  string org_id = 3;
-  string unit_id = 4;
-  string product_id = 5;
-  string user_id = 6;
-  string reference = 7;
-  // The Merchant and its reference
-  string merchant = 8;
-  string merchant_reference = 9;
-  // The charge.
-  // Values are typically numeric/Decimal strings.
-  // A charge is made using coins or using commodity units.
-  // Storage might use the units field (which might be a byte value).
-  // Interpretation of units is commodity-specific.
-  // Normally only one of these is set.
-  string charge_coins = 10;
-  string charge_units = 11;
+  // A unique charge reference, what's the operation being charged,
+  // and what's the subject being charged? The subject may be something
+  // like a Data Manager Instance UUID.
+  string uuid = 2;
+  OperationEnum operation = 3;
+  string subject = 4;
+  // The coin value.
+  // A string representation of a floating-point number,
+  // typically a Python Decimal rather than a float (to avoid any transmission
+  // or translation precision errors). Financial information should always
+  // be passed using a decimal representation.
+  string value = 5;
+
+  // A sequence number (to provide de-duplication)
+  uint32 sqn = 6;
+  // The user (name) responsible for the charge,
+  // and the Product (or Unit) providing the funds.
+  // One of Product or Unit must be provided but not necessarily both.
+  string user = 7;
+  string product_id = 8;
+  string unit_id = 9;
+
+  // To be accepted charges need an authorisation code.
+  string auth_code = 10;
 
   // Fields 16..2047
+
+  // Any charge-specific additional material.
+  // If used this should be a string representation of
+  // a dictionary/map. The keys and values are not
+  // interpreted, they're simply passed-on verbatim.
+  string additional_data = 16;
+  // If an authorisation reference is available that can be provided.
+  string auth_ref = 17;
 }
