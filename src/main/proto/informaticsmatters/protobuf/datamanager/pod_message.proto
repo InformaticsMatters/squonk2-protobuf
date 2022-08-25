@@ -3,8 +3,8 @@ syntax = "proto3";
 package informaticsmatters.protobuf.datamanager;
 
 // Carrier of Pod changes.
-// This message is produced by the Data Manger (KEW) watcher,
-// and is consumed by the Data Manager 'consumer' (PBC).
+// This message is produced by the Kubernetes Event Watcher (KEW),
+// and is consumed by the Protocol Buffer Consumer (PBC).
 message PodMessage {
   // Fields 1..15
   //

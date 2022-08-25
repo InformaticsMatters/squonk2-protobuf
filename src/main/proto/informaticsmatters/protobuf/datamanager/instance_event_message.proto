@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package informaticsmatters.protobuf.datamanager;
+
+// Carrier of instance event messages.
+// This message is produced by the Kubernetes Event Watcher (KEW),
+// and is consumed by the Protocol Buffer Consumer (PBC).
+message InstanceEventMessage {
+  // Fields 1..15
+  //
+  // Events contain a time-stamp.
+  string timestamp = 1;
+  // The event task ID (the DB record ID, not the Task's UUID)
+  int64 task_record_id = 2;
+  // The event level (A Python logging level like 'INFO')
+  string level = 3;
+  // The event content (the user part of the logged message)
+  string content = 4;
+  // True to replace the prior instance event.
+  // This is typically used by the Nextflow watcher
+  // to update an evolving ANSI representation of the job's execution.
+  bool replace_prior_content = 5;
+
+  // Fields 16..2047
+}
