@@ -28,30 +28,16 @@ message InstanceCostMessage {
   // Storage is a string of bytes, with optional commas to aid readability
   // (e.g. "123,456")
   string value = 3;
-  // The username of the User incurring the COST
-  string username = 4;
   // The Sequence Number of the COST (1..N).
   // Considered unique for a given sequence.
-  int64 sqn = 5;
+  int64 sqn = 4;
   // The subject of the COST,
   // typically a Dataset, Instance or Project.
-  string subject = 6;
-  // The AS authorisation code for the sequence of COSTs.
-  string auth_code = 7;
-  // The Product to be charged.
-  // Either this or the Unit must be provided.
-  string product = 8;
-  // The Unit to be charged.
-  // Either this or the Product must be provided.
-  string unit = 9;
+  string instance = 5;
 
   // Fields 16..2047
   //
   // Set if this is an 'End of Charges' message.
   // One of these must concluded a sequence of charges.
   bool eoc = 16;
-  // An optional UUID for the COST.
-  string uuid = 17;
-  // An optional authorisation reference.
-  string auth_ref = 18;
 }
