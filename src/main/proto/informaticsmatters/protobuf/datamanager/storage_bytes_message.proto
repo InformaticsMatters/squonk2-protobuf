@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package informaticsmatters.protobuf.datamanager;
 
-// Carrier of storage COST messages.
+// Carrier of storage bytes messages.
 // This message is produced by Celery Tasks (for Dataset storage)
 // where a Unit is provided and the Monitor (MON) for Project storage,
 // where a Product is provided.
-message StorageCostMessage {
+message StorageBytesMessage {
   // Fields 1..15
   //
   // The COST time-stamp.
