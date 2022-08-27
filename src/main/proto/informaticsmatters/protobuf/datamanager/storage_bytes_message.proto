@@ -18,12 +18,14 @@ message StorageBytesMessage {
   // The subject of the COST,
   // typically a Dataset or Project UUID.
   string subject = 3;
+  // The user incurring the cost
+  string username = 4;
+  // Storage costs require a Product or
+  // (where a Product is not available) a Unit.
+  // So supply at least one of product or Unit
+  string product = 5;
+  string unit = 6;
 
   // Fields 16..2047
   //
-  // Storage costs require a Product or
-  // (where a Product is not available) a Unit.
-  // So supply one of product or Unit
-  string product = 16;
-  string unit = 17;
 }
