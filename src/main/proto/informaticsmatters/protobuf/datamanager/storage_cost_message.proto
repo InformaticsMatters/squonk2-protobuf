@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package informaticsmatters.protobuf.datamanager;
+
+// Carrier of storage COST messages.
+// This message is produced by Celery Tasks (for Dataset storage)
+// where a Unit is provided and the Monitor (MON) for Project storage,
+// where a Product is provided.
+message StorageCostMessage {
+  // Fields 1..15
+  //
+  // The COST time-stamp.
+  // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.00+0000
+  string timestamp = 1;
+  // Storage is a string of bytes, with optional commas to aid readability
+  // (e.g. "123,456")
+  string bytes = 2;
+  // The subject of the COST,
+  // typically a Dataset or Project UUID.
+  string subject = 3;
+
+  // Fields 16..2047
+  //
+  // Storage costs require a Product or
+  // (where a Product is not available) a Unit.
+  // So supply one of product or Unit
+  string product = 16;
+  string unit = 17;
+}

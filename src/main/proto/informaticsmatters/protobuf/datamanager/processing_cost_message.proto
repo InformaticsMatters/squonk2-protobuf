@@ -2,38 +2,25 @@ syntax = "proto3";
 
 package informaticsmatters.protobuf.datamanager;
 
-// Enumerations of Instance COST operations.
-// For processing costs the COST operation will be PROCESSING
-enum OperationEnum {
-  OPERATION_ENUM_UNSPECIFIED = 0;
-  OPERATION_ENUM_STORAGE = 1;
-  OPERATION_ENUM_PROCESSING = 2;
-  OPERATION_ENUM_MEMORY = 3;
-}
-
 // Carrier of instance COST messages.
 // This message is produced by the Data Manger (KEW) watcher,
 // and is consumed by the Protocol Buffer Consumer (PBC).
-message InstanceCostMessage {
+message ProcessingCostMessage {
   // Fields 1..15
   //
   // The COST time-stamp.
   // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.00+0000
   string timestamp = 1;
-  // The operation the COST is for
-  OperationEnum operation = 2;
   // The value (coins or bytes).
   // Coins are string representations of a Decimal (e.g "0.3")
   // and can be relative (additive) when prefixed with "+", e.g. "+0.4".
-  // Storage is a string of bytes, with optional commas to aid readability
-  // (e.g. "123,456")
-  string value = 3;
+  string cost = 2;
   // The Sequence Number of the COST (1..N).
   // Considered unique for a given sequence.
-  int64 sqn = 4;
+  int64 sqn = 3;
   // The subject of the COST,
   // typically a Dataset, Instance or Project.
-  string instance = 5;
+  string instance = 4;
 
   // Fields 16..2047
   //
