@@ -10,8 +10,8 @@ message InstanceEventMessage {
   //
   // Events contain a time-stamp.
   string timestamp = 1;
-  // The event task ID (the DB record ID, not the Task's UUID)
-  int64 task_record_id = 2;
+  // The event task ID
+  string task_id = 2;
   // The event level (A Python logging level like 'INFO')
   string level = 3;
   // The event content (the user part of the logged message)
