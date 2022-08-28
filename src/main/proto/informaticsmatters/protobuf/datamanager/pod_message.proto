@@ -15,7 +15,7 @@ message PodMessage {
   string pod_name = 2;
   // The Task ID
   // All Pods are the result of a DM 'Task'
-  string task_id = 3;
+  string task = 3;
   // The Purpose for the Pod (the Task's purpose)
   uint32 purpose = 4;
   // The Task phase (a Kubernetes Pod phase).
@@ -57,5 +57,5 @@ message PodMessage {
   uint32 exit_code = 17;
 
   // Instance ID (id present)
-  string instance_id = 18;
+  string instance = 18;
 }
