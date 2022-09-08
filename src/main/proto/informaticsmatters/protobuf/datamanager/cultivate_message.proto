@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package informaticsmatters.protobuf.datamanager;
+
+// Carrier of Cultivate messages - a celery task runner.
+// This message is produced by Pods that want to start a Celery tasks
+// and is consumed by the Protocol Buffer Consumer (PBC).
+message CultivateMessage {
+  // Fields 1..15
+  //
+  // Messages typically contain an origin time-stamp.
+  // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.000000Z
+  string timestamp = 1;
+  // The Task.
+  // A function annotated as a task, e.g. 'put_dataset'.
+  string task = 2;
+  // Task parameters.
+  // A string representation of a Dictionary that the PBC will
+  // re-assemble and use as a dictionary of parameters to pass to the Task
+  // via the (expected) 'task_params' argument.
+  string params = 3;
+
+  // Fields 16..2047
+  //
+}
