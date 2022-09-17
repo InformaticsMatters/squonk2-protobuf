@@ -21,7 +21,7 @@ setuptools.setup(
     version=os.environ.get('GITHUB_REF_SLUG', '2.0.0'),
     author='Alan Christie',
     author_email='achristie@informaticsmatters.com',
-    url='https://github.com/informaticsmatters/protobuf',
+    url='https://github.com/informaticsmatters/squonk2-protobuf',
     license='MIT',
     description='Cross-product protocol buffers',
     long_description=long_description,
