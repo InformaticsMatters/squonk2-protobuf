@@ -43,4 +43,4 @@ Get in touch
 
 - Report bugs, suggest features or view the source code `on GitHub`_.
 
-.. _on GitHub: https://github.com/informaticsmatters/protobuf
+.. _on GitHub: https://github.com/informaticsmatters/squonk2-protobuf
