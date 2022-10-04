@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package informaticsmatters.protobuf.datamanager;
 
-// Carrier of instance event messages.
+// Carrier of Pod (Job, Formatter, Application) event messages.
 // This message is produced by the Kubernetes Event Watcher (KEW),
 // and is consumed by the Protocol Buffer Consumer (PBC).
-message InstanceEventMessage {
+message PodEventMessage {
   // Fields 1..15
   //
   // Events contain a time-stamp.

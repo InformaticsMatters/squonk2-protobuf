@@ -15,7 +15,7 @@ From there the directory is ``proto/informaticsmatters`` followed by component
 directories or a ``common`` directory. An example protocol message
 file might be::
 
-    src/main/proto/informaticsmatters/protobuf/datamanager/PodMessage.proto
+    src/main/proto/informaticsmatters/protobuf/datamanager/pod_message.proto
 
 When transmitted on a topic-based messaging service the topic is
 the lower-case dot-separated message name relative to ``informaticsmatters``
