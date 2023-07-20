@@ -5,6 +5,14 @@ Informatics Matters cross-product protocol buffers
    :target: https://badge.fury.io/py/im-protobuf
    :alt: PyPI package (latest)
 
+.. image:: https://github.com/InformaticsMatters/squonk2-protobuf/actions/workflows/build.yaml/badge.svg
+   :target: https://github.com/InformaticsMatters/squonk2-protobuf/actions/workflows/build.yaml
+   :alt: Build
+
+.. image:: https://github.com/InformaticsMatters/squonk2-protobuf/actions/workflows/publish.yaml/badge.svg
+   :target: https://github.com/InformaticsMatters/squonk2-protobuf/actions/workflows/publish.yaml
+   :alt: Publish
+
 A library of python bindings for `protocol buffer`_ definitions used by one or
 more products in the Informatics Matters product suite.
 
