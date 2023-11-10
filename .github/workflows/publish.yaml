@@ -10,7 +10,6 @@ name: publish
 # At the GitHub 'organisation' or 'project' level you must have the following
 # GitHub 'Repository Secrets' defined (i.e. via 'Settings -> Secrets'): -
 #
-# PYPI_USERNAME
 # PYPI_TOKEN
 #
 # -----------
@@ -59,5 +58,5 @@ jobs:
     - name: Publish
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        user: ${{ secrets.PYPI_USERNAME }}
+        user: __token__
         password: ${{ secrets.PYPI_TOKEN }}
