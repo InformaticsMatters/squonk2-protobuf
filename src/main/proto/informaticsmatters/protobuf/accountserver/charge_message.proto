@@ -50,7 +50,7 @@ message MerchantChargeMessage {
 
   // The User, Product (or Unit or Organisation) providing the funds.
   // One of Product or Unit or Organisation must be provided but not necessarily all.
-  string user = 16
+  string user = 16;
   string product = 17;
   string unit = 18;
   string organisation = 19;
