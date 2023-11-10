@@ -1,2 +1,2 @@
 pre-commit == 2.18.1
-pyroma == 4.0
+pyroma == 4.2
