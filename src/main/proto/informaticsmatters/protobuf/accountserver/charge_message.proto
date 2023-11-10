@@ -2,6 +2,11 @@ syntax = "proto3";
 
 package informaticsmatters.protobuf.accountserver;
 
+enum MerchantKindEnum {
+  MERCHANT_KIND_ENUM_UNSPECIFIED = 0;
+  MERCHANT_KIND_ENUM_DATA_MANAGER = 1;
+}
+
 enum OperationEnum {
   OPERATION_ENUM_UNSPECIFIED = 0;
   OPERATION_ENUM_STORAGE = 1;
@@ -9,49 +14,50 @@ enum OperationEnum {
   OPERATION_ENUM_MEMORY = 3;
 }
 
-// A Charge message.
-// A sequence of charges (for a given authorisation code)
-// starts with a ChargeBegin message
-// and ends with a ChargeEnd message.
-message ChargeMessage {
+// A Charge message (originated by a Merchant).
+message MerchantChargeMessage {
   // Fields 1..15
   //
-  // Messages typically contain an origin time-stamp.
-  // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.000000Z
+  // An ISO8601 UTC string that includes a timezone.
+  // Typically something like 2021-12-31T00:00:00.00Z
   string timestamp = 1;
-  string subject = 2;
-  // To be accepted charges need an authorisation code.
-  string auth_code = 3;
+  // The merchant responsible for submitting the charge.
+  MerchantKindEnum merchant_kind= 2;
+  string merchant_name = 3;
+  unit32 merchant_id = 4;
 
   // What's the operation being charged,
   // and what's the subject being charged?
   // The subject may be something like a Data Manager Instance UUID.
-  OperationEnum operation = 4;
+  OperationEnum operation = 5;
+  string subject = 6;
+  // All charges have an authorisation code.
+  // This will have been provided by the Account Server.
+  // All related charges will contain the same authorisation code.
+  string auth_code = 7;
 
   // The coin value.
   // A string representation of a floating-point number,
   // typically a Python Decimal rather than a float (to avoid any transmission
-  // or translation precision errors). Financial information should always
+  // or translation precision errors). Financial information will always
   // be passed using a decimal representation.
-  string value = 5;
+  string value = 8;
 
-  // A sequence number (to provide de-duplication)
-  uint32 sqn = 6;
-  // The user (name) responsible for the charge.
-  string user = 7;
+  // A charge sequence number
+  uint32 sqn = 9;
 
   // Fields 16..2047
 
-  // The Product (or Unit) providing the funds.
-  // One of Product or Unit must be provided but not necessarily both.
-  string product_id = 16;
-  string unit_id = 17;
+  // The User, Product (or Unit or Organisation) providing the funds.
+  // One of Product or Unit or Organisation must be provided but not necessarily all.
+  string user = 16
+  string product = 17;
+  string unit = 18;
+  string organisation = 19;
 
   // Any charge-specific additional material.
   // If used this should be a string representation of
   // a dictionary/map. The keys and values are not
   // interpreted, they're simply passed-on verbatim.
-  string additional_data = 18;
-  // If an authorisation reference is available that can be provided.
-  string auth_ref = 19;
+  string additional_data = 30;
 }
