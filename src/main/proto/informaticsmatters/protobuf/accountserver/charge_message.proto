@@ -24,7 +24,7 @@ message MerchantChargeMessage {
   // The merchant responsible for submitting the charge.
   MerchantKindEnum merchant_kind= 2;
   string merchant_name = 3;
-  unit32 merchant_id = 4;
+  uint32 merchant_id = 4;
 
   // What's the operation being charged,
   // and what's the subject being charged?
