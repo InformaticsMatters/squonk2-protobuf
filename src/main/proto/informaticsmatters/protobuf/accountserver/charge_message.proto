@@ -49,7 +49,8 @@ message MerchantChargeMessage {
   // Fields 16..2047
 
   // The User, Product (or Unit or Organisation) providing the funds.
-  // One of Product or Unit or Organisation must be provided but not necessarily all.
+  // The User is optional and one of Product or Unit or Organisation
+  // will be provided but not necessarily all.
   string user = 16;
   string product = 17;
   string unit = 18;
