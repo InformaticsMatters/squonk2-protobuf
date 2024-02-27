@@ -31,6 +31,8 @@ setuptools.setup(
     # Our modules to package
     package_dir={'': 'src/main/proto'},
     packages=['informaticsmatters.protobuf',
+              'informaticsmatters.protobuf.accountserver',
+              'informaticsmatters.protobuf.common',
               'informaticsmatters.protobuf.datamanager'],
 
     # Project classification:
@@ -40,8 +42,7 @@ setuptools.setup(
         'Environment :: Other Environment',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.11',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Operating System :: POSIX :: Linux',
     ],
