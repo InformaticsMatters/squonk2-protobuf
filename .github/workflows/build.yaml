@@ -18,6 +18,8 @@ name: build
 
 on:
   push:
+    branches:
+    - '**'
   schedule:
   # Build daily at 6:32am...
   - cron: '32 6 * * *'
