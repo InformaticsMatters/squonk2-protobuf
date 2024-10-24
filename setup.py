@@ -25,6 +25,7 @@ setuptools.setup(
     license='MIT',
     description='Cross-product protocol buffers',
     long_description=long_description,
+    long_description_content_type='text/x-rst',
     keywords='protobuf protoc messaging',
     platforms=['any'],
 
