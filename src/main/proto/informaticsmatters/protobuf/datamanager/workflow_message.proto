@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package informaticsmatters.protobuf.datamanager;
+
+// Carrier of Workflow messages.
+// This message is produced by the WorkflowValidator (in the API Pod),
+// and is consumed by the Protocol Buffer Consumer (PBC) for delivery
+// to the WorkflowEngine.
+message PodMessage {
+  // Fields 1..15
+  //
+  // Messages typically contain an origin time-stamp.
+  // An ISO8601 UTC string of the form: 2021-12-31T00:00:00.000000Z
+  string timestamp = 1;
+  // The action. One of 'START' or 'STOP'
+  string action = 2;
+  // The UUID of the RunningWorkflow record, created by the WorkflowValidator
+  // prior to dispatching the message.
+  string running_workflow = 3;
+}
