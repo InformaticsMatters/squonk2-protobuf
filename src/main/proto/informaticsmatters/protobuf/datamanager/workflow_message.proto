@@ -6,7 +6,7 @@ package informaticsmatters.protobuf.datamanager;
 // This message is produced by the WorkflowValidator (in the API Pod),
 // and is consumed by the Protocol Buffer Consumer (PBC) for delivery
 // to the WorkflowEngine.
-message PodMessage {
+message WorkflowMessage {
   // Fields 1..15
   //
   // Messages typically contain an origin time-stamp.
