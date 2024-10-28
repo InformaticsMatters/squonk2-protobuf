@@ -58,6 +58,4 @@ message PodMessage {
 
   // Instance ID (id present)
   string instance = 18;
-  // Task ID
-  string task = 19;
 }
