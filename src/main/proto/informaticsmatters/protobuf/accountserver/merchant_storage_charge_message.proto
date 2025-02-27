@@ -22,7 +22,7 @@ message MerchantStorageChargeMessage {
   uint32 merchant_id = 4;
 
   // Is this charge for Dataset or Project storage?
-  StorageReasonEnum type = 5;
+  StorageReasonEnum reason = 5;
 
   // All charges have an authorisation code.
   // This will have been provided by the Account Server.
