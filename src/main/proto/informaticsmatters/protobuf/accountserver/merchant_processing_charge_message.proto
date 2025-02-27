@@ -2,41 +2,42 @@ syntax = "proto3";
 
 package informaticsmatters.protobuf.accountserver;
 
-enum OperationEnum {
-  OPERATION_ENUM_UNSPECIFIED = 0;
-  OPERATION_ENUM_STORAGE = 1;
-  OPERATION_ENUM_PROCESSING = 2;
-  OPERATION_ENUM_MEMORY = 3;
-}
-
-// A Charge message (originated by a Merchant).
-message MerchantChargeMessage {
+// A Processing Charge message (originated by a Merchant).
+message MerchantProcessingChargeMessage {
   // Fields 1..15
   //
   // An ISO8601 UTC string that includes a timezone.
   // Typically something like 2021-12-31T00:00:00.00Z
   string timestamp = 1;
+
   // The merchant responsible for submitting the charge.
   string merchant_kind = 2;
   string merchant_name = 3;
   uint32 merchant_id = 4;
 
-  // What's the operation being charged,
-  OperationEnum operation = 5;
   // All charges have an authorisation code.
   // This will have been provided by the Account Server.
   // All related charges will contain the same authorisation code.
   uint32 auth_code = 6;
 
-  // The coin value.
-  // A string representation of a floating-point number,
-  // typically a Python Decimal rather than a float (to avoid any transmission
-  // or translation precision errors). Financial information will always
-  // be passed using a decimal representation.
-  string value = 7;
+  // Name assigned to the charge
+  string name = 7;
 
-  // A charge sequence number
-  uint32 sqn = 8;
+  // The coin value.
+  // A string representation of Coins,
+  // a string representation of a Python Decimal rather.
+  // Financial information will always use a decimal representation.
+  string coins = 8;
+
+  // Processing charges often have 'sequence number',
+  // providing a logical ordering of charges.
+  uint32 sqn = 9;
+
+  // End of charge?
+  // The final charge in any sequence will set the 'eoc' property
+  // indicating that no further charges for this authorisation code
+  // are expected.
+  bool eoc = 10;
 
   // Fields 16..2047
 
@@ -49,10 +50,8 @@ message MerchantChargeMessage {
   string organisation = 19;
 
   // Any charge-specific additional material.
-  // If used this should be a string representation of
+  // If encountered this should be a string representation of
   // a dictionary/map. The keys and values are not
   // interpreted, they're simply passed-on verbatim.
   string additional_data = 30;
-  // End of charge?
-  bool eoc = 31;
 }
