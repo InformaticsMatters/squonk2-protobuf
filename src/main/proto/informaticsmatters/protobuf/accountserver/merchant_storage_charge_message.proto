@@ -3,6 +3,7 @@ syntax = "proto3";
 package informaticsmatters.protobuf.accountserver;
 
 enum StorageReasonEnum {
+  STORAGE_REASON_ENUM_UNSPECIFIED = 0;
   STORAGE_REASON_ENUM_DATASET = 1;
   STORAGE_REASON_ENUM_PROJECT = 2;
 }
