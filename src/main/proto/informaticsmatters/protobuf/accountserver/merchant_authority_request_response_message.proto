@@ -2,18 +2,11 @@ syntax = "proto3";
 
 package informaticsmatters.protobuf.accountserver;
 
-enum AuthorityOperationEnum {
-  AUTHORITY_OPERATION_ENUM_UNSPECIFIED = 0;
-  AUTHORITY_OPERATION_ENUM_PROCESSING = 1;
-  AUTHORITY_OPERATION_ENUM_STORAGE = 2;
-}
-
 enum AuthorityResponseEnum {
   AUTHORITY_RESPONSE_ENUM_UNSPECIFIED = 0;
   AUTHORITY_RESPONSE_ENUM_GRANTED = 1;
   AUTHORITY_RESPONSE_ENUM_DENIED = 2;
 }
-
 
 // An Authority Request (and Response) message (originated by a Merchant).
 //
@@ -39,11 +32,11 @@ message MerchantAuthorityRequestResponseMessage {
   string merchant_name = 3;
   uint32 merchant_id = 4;
 
-  // What operation is being performed that requires authorisation?
-  AuthorityOperationEnum operation = 5;
-  // The merchant's internal reference for the request
-  string ref_name = 6;
-  string ref_id = 7;
+  // The merchant's AuthorisableAction
+  string action_operation = 5;
+  string action_value = 6;
+  string action_reference_name = 7;
+  string action_reference_id = 8;
 
   // Authority response which includes a code if GRANTED and a reason if DENIED
   AuthorityResponseEnum response = 10;
