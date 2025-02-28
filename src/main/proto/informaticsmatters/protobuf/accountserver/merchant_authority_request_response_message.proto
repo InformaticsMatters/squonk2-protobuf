@@ -32,7 +32,8 @@ message MerchantAuthorityRequestResponseMessage {
   string merchant_name = 3;
   uint32 merchant_id = 4;
 
-  // The merchant's AuthorisableAction
+  // The merchant's AuthorisableAction.
+  // What is being done that requires authority.
   string action_operation = 5;
   string action_value = 6;
   string action_reference_name = 7;
