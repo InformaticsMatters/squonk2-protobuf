@@ -9,6 +9,11 @@ enum StorageReasonEnum {
 }
 
 // A Storage Charge message (originated by a Merchant).
+//
+// Storage charges are sent my Merchants and represent the number of
+// bytes that have been consumed (or released) on behalf of a User (Product).
+// The total storage used is maintained and billed (in COINS) based on the
+// peak usage that has been observed each day for corresponding Product.
 message MerchantStorageChargeMessage {
   // Fields 1..15
   //

@@ -3,6 +3,10 @@ syntax = "proto3";
 package informaticsmatters.protobuf.accountserver;
 
 // A Processing Charge message (originated by a Merchant).
+//
+// Processing charges are sent my Merchants and represent the costs of
+// CPU effort consumed (a COST), converted to COINS.
+// The charge is used to accumulate to total COINS consumed by a Product.
 message MerchantProcessingChargeMessage {
   // Fields 1..15
   //
