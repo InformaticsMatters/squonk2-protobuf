@@ -40,7 +40,7 @@ message MerchantAuthorityRequestResponseMessage {
   uint32 merchant_id = 4;
 
   // What operation is being performed that requires authorisation?
-  OperationEnum operation = 5;
+  AuthorityOperationEnum operation = 5;
   // The merchant's internal reference for the request
   string ref_name = 6;
   string ref_id = 7;
