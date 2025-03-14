@@ -31,17 +31,19 @@ to PyPI automatically from the main branch using GitHub Actions.
 To build the package distribution manually you will need to have
 [protoc] installed, you can then run: -
 
-    export P_BASE=src/main/proto
-    export I_PATH=informaticsmatters/protobuf
+```bash
+export P_BASE=src/main/proto
+export I_PATH=informaticsmatters/protobuf
 
-    for P_DIR in $(ls -d ${P_BASE}/${I_PATH}/*/); do
-        protoc -I=${P_BASE} --python_out=${P_BASE} ${P_DIR}/*.proto;
-        touch ${P_DIR}/__init__.py
-    done
-    touch ${P_BASE}/${I_PATH}/__init__.py
+for P_DIR in $(ls -d ${P_BASE}/${I_PATH}/*/); do
+    protoc -I=${P_BASE} --python_out=${P_BASE} ${P_DIR}/*.proto;
+    touch ${P_DIR}/__init__.py
+done
+touch ${P_BASE}/${I_PATH}/__init__.py
 
-    python -m pip install --upgrade build
-    python -m build --sdist --wheel --outdir dist/
+python -m pip install --upgrade build
+python -m build --sdist --wheel --outdir dist/
+```
 
 >   Because you're building outside the CI process the version number of
     the package will be fixed at 2.0.0. DO NOT change this behaviour.
